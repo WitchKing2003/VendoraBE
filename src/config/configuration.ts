@@ -16,6 +16,10 @@ const configuration = () => ({
     .split(',')
     .map((origin) => origin.trim())
     .filter(Boolean),
+  upload: {
+    dir: process.env.UPLOAD_DIR ?? 'uploads',
+    maxFileSize: Number(process.env.UPLOAD_MAX_SIZE ?? 5 * 1024 * 1024),
+  },
 });
 
 export type AppConfig = ReturnType<typeof configuration>;

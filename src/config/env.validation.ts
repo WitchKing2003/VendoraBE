@@ -1,4 +1,4 @@
-import { plainToInstance } from 'class-transformer';
+import { plainToInstance, Type } from 'class-transformer';
 import {
   IsIn,
   IsInt,
@@ -46,6 +46,17 @@ class EnvVariables {
   @IsOptional()
   @IsString()
   CORS_ORIGIN?: string;
+
+  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
+  UPLOAD_DIR?: string;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  UPLOAD_MAX_SIZE?: number;
 }
 
 /**
